@@ -1,0 +1,6 @@
+- Insert a valid OpenAI API key
+- Upload your file(s) (supported: PDF/CSV/DOCX/TXT).
+- Ask question in the query box about the uploaded file 
+- To upload a new file, refresh the page 
+
+Model: ChatGPT 3.5 Turbo 16k
