@@ -16,8 +16,8 @@ st.image(image)
 
 # Chat title
 st.header("ChatGPT file interpreter")
-st.write("*Upload your own files and ask questions to ChatGPT*")
-st.write('**File types supported: PDF/DOCX/TXT/CSV**')
+st.write("**Upload your own files and ask questions to ChatGPT**")
+st.write('*File types supported: PDF/DOCX/TXT/CSV*')
 
 # Load version history from the text file
 def how_to():
