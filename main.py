@@ -41,7 +41,7 @@ with st.sidebar:
     os.environ["OPENAI_API_KEY"] = openai_api_key
 
 # Initialize ChatOpenAI model
-llm = ChatOpenAI(temperature=2, model_name="gpt-3.5-turbo-16k", streaming=True)
+llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k", streaming=True)
 
 
 # Sidebar section for uploading files and providing a YouTube URL
