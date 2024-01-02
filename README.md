@@ -1,1 +1,1 @@
-# GPT-file-interpretor
+# GPT-file-interpreter
