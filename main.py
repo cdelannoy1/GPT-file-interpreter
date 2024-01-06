@@ -19,7 +19,7 @@ st.header("ChatGPT file interpreter")
 st.write("**Upload your own files and ask questions to ChatGPT**")
 st.write('*File types supported: PDF/DOCX/TXT/CSV*')
 
-# Load version history from the text file
+# Load how_to from the text file
 def how_to():
     with open("how_to.txt", "r") as file:
         return file.read() 
@@ -44,13 +44,13 @@ with st.sidebar:
 llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-16k", streaming=True)
 
 
-# Sidebar section for uploading files and providing a YouTube URL
+# Sidebar section for uploading files
 with st.sidebar:
     uploaded_files = st.file_uploader("Please upload your files", accept_multiple_files=True, type=None)
 
     st.info("Refresh the browser if you decide to upload more files to reset the session")
 
-# Check if files are uploaded or YouTube URL is provided
+# Check if files are uploaded
 if uploaded_files:
     # Print the number of files uploaded or YouTube URL provided to the console
     st.write(f"Number of files uploaded: {len(uploaded_files)}")
@@ -78,14 +78,14 @@ if uploaded_files:
                     documents.extend(loaded_documents)
        
 
-        # Chunk the data, create embeddings, and save in vectorstore
+        # Chunk the data, create embeddings, and save in vector
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)
         document_chunks = text_splitter.split_documents(documents)
 
         embeddings = OpenAIEmbeddings()
         vectorstore = Chroma.from_documents(document_chunks, embeddings)
 
-        # Store the processed data in session state for reuse
+        # Store the processed data in session state
         st.session_state.processed_data = {
             "document_chunks": document_chunks,
             "vectorstore": vectorstore,
@@ -96,7 +96,7 @@ if uploaded_files:
         document_chunks = st.session_state.processed_data["document_chunks"]
         vectorstore = st.session_state.processed_data["vectorstore"]
 
-    # Initialize Langchain's QA Chain with the vectorstore
+    # Initialize Langchain's QA Chain with the vector
     qa = ConversationalRetrievalChain.from_llm(llm, vectorstore.as_retriever())
 
     # Initialize chat history
